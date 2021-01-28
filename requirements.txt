@@ -1,0 +1,7 @@
+colorama >= 0.4.4
+colored >= 1.4.2
+termcolor >= 1.1.0
+flask >= 1.1.2
+jsmin == 2.2.2
+csscompressor == 0.9.5
+htmlmin == 0.1.12

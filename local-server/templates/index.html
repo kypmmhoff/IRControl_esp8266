@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% raw %}
+<html ng-app="controlapp">
+<head>    
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="/static/actions.js"></script>
+    <link href="/static/style.css" rel="stylesheet"/>
+</head>
+<body ng-controller="remotecontroller as rmt">
+    <p class="nes-balloon from-right mybox is-dark" ng-show="rmt.view">Command executed!</p>
+    <div class="container" >        
+        <main class="main-content">            
+            <section class="topic">
+                <section class="showcase" ng-repeat="face in rmt.interface">
+                    <section class="nes-container with-title">
+                        <h3 class="title">{{ face.lbl }}</h3>
+                        <button ng-repeat="btn in face.btns" type="button" class="nes-btn mystl" ng-class="btn.style" ng-click="rmt.command(face, btn)">{{ btn.lbl }}</button>                        
+                    </section>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+{% endraw %}

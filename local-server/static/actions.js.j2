@@ -1,0 +1,21 @@
+angular.module('controlapp',[])
+    .controller('remotecontroller', ['$http','$timeout',
+    function($http, $timeout){
+        var ctxt = this;    
+        ctxt.view = false;   
+        ctxt.interface = InterfaceBuilder
+        ctxt.command = function(face, btn){
+            var params = {codes:btn.codes,type:face.type};
+            $http({method:'POST', url:'/command-obj', data: params } )            
+            .then(function success(response){
+                console.log(response.data);
+                ctxt.view = true;
+                $timeout(callView,1000);
+            }, function error(response){
+                console.log('error');
+            });
+        };
+        function callView(){
+            ctxt.view = false;
+        }
+    } ]);
